@@ -1,5 +1,5 @@
-require "sipwizard/version"
+Dir[File.dirname(__FILE__) + '/sipwizard/*.rb'].each{ |file| require file }
 
 module Sipwizard
-  # Your code goes here...
+  extend self
 end
