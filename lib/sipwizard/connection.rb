@@ -8,7 +8,7 @@ module Sipwizard
     attr_accessor :faraday_connection
 
     def initialize(faraday_adapter=Faraday.default_adapter)
-      @faraday_connection = Faraday.new do |faraday|
+      @faraday_connection = Faraday.new(API_PATH) do |faraday|
         faraday.request :url_encoded #for post/put params
         faraday.response :logger
         faraday.response :json, content_type: /\bjson\z/
@@ -18,12 +18,21 @@ module Sipwizard
       @faraday_connection.headers['apikey'] = Sipwizard.config.api_key
     end
 
-    def self.uri_for_path(path)
-      "#{API_PATH}#{path}"
-    end
 
+    # Public make a get request to the api
+    #
+    # path   - The path of the api
+    # params - The query parameters (default: {}):
+    #
+    # Examples
+    #
+    #   get('cdr/count')
+    #
+    #   get('cdr/count', { where: 'FromName="John Doe"'})
+    #
+    # Returns Faraday::Response
     def get(path, params={})
-      self.faraday_connection.get(Connection.uri_for_path(path), params)
+      self.faraday_connection.get(path, params)
     end
   end
 end
