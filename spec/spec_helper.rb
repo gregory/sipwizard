@@ -13,10 +13,7 @@ Turn.config do |c|
 end
 
 MiniTest::Spec.before :each do
-  #Sipwizard.configure do |config|
-    #config.api_key = 'default_api'
-    #config.ssl = {
-      #ca_path: "/System/Library/OpenSSL" + "/certs"
-    #}
-  #end
+  Sipwizard.configure do |config|
+    config.api_key = 'default_api'
+  end
 end
