@@ -3,12 +3,16 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in sipwizard.gemspec
 
 group :test do
-  gem 'minitest', '~> 4.7.5'
+  gem 'rspec'
   gem 'guard'
-  gem 'guard-minitest'
+  gem 'guard-rspec'
+  gem 'vcr'
+end
+
+group :test, :development do
   gem 'pry'
-  gem 'pry-debugger'
-  gem 'turn'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 gemspec

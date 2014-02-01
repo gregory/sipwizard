@@ -1,0 +1,2 @@
+sensitive_data:
+  SIPSORCERY_API_KEY: "<YOUR API KEY>"
