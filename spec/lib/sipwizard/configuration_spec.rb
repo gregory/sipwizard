@@ -7,7 +7,7 @@ describe Sipwizard::Configuration do
     let(:api_key){ 'foo' }
 
     it 'has a api_key' do
-      subject.api_key.must_equal api_key
+      subject.api_key.should eq api_key
     end
   end
 end
