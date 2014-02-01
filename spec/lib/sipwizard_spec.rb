@@ -13,7 +13,7 @@ describe Sipwizard do
     end
 
     it 'has set the api_key' do
-      subject.config.api_key.must_equal api_key
+      subject.config.api_key.should eq api_key
     end
   end
 end

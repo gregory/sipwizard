@@ -10,7 +10,8 @@ module Sipwizard
     def initialize(faraday_adapter=Faraday.default_adapter)
       @faraday_connection = Faraday.new(API_PATH) do |faraday|
         faraday.request :url_encoded #for post/put params
-        faraday.response :logger
+        #faraday.response :logger
+        faraday.response :raise_error
         faraday.response :json, content_type: /\bjson\z/
         faraday.adapter faraday_adapter
       end
