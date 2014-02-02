@@ -33,7 +33,7 @@ module Sipwizard
     #
     # Returns Faraday::Response
     def get(path, params={})
-      self.faraday_connection.get(path, params)
+      self.faraday_connection.get(path, params).body
     end
   end
 end

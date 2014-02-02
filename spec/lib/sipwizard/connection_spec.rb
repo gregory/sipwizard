@@ -14,9 +14,8 @@ describe Sipwizard::Connection do
 
     context 'when the api key is valid' do
       it 'doesnt complain' do
-        expect(subject.status).to eq 200
-        expect(subject.body["Error"]).to be_nil
-        expect(subject.body["Success"]).to be_true
+        expect(subject["Error"]).to be_nil
+        expect(subject["Success"]).to be_true
       end
     end
 
@@ -28,9 +27,8 @@ describe Sipwizard::Connection do
       end
 
       it 'returns an error' do
-        expect(subject.status).to eq 200
-        expect(subject.body["Error"]).not_to be_nil
-        expect(subject.body["Success"]).to be_false
+        expect(subject["Error"]).not_to be_nil
+        expect(subject["Success"]).to be_false
       end
     end
   end
