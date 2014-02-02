@@ -20,7 +20,7 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = "spec/vcr"
   config.hook_into :faraday
-  config.default_cassette_options = { record: :new_episodes, serialize_with: :psych }
+  config.default_cassette_options = { serialize_with: :psych , record: :none}
 
   settings['sensitive_data'].each do |k, v|
     config.filter_sensitive_data("<#{k}>"){ |interactive| v }
@@ -33,7 +33,7 @@ VCR.configure do |config|
       endpoint_test = URI(request.uri).path.split("/rest/v0.1/provisioning.svc/").last
       vcr_options = { match_requests_on: [:method, :path, :body, :headers, :query], allow_playback_repeats: true }
 
-      VCR.use_cassette("sipsorcery/#{endpoint_test}",match_requests_on: [:method, :path, :body, :headers, :query], allow_playback_repeats: true, &request)
+      VCR.use_cassette("sipsorcery/#{endpoint_test}", vcr_options, &request)
     end
   end
 end

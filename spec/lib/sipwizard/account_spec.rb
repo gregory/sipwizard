@@ -25,6 +25,7 @@ describe Sipwizard::Account do
         password: "bar"
       }
     end
+
     subject{ described_class.create(params) }
 
     it 'creates a new account' do
