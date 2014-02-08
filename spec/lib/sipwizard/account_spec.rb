@@ -8,13 +8,14 @@ describe Sipwizard::Account do
     end
   end
 
-  describe '.find(username)' do
-    let(:username){ settings['sensitive_data']['SIPUsername'] }
+  describe '.find(id)' do
+    let(:id){ settings['sensitive_data']['ID'] }
 
-    subject{ described_class.find(username) }
+    subject{ described_class.find(id) }
 
     it 'returns an account' do
       subject.should be_instance_of Sipwizard::Account
+      subject.id.should eq id
     end
   end
 

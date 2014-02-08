@@ -1,2 +1,3 @@
 sensitive_data:
   SIPSORCERY_API_KEY: "<YOUR API KEY>"
+  ID: "<A VALID ID>"

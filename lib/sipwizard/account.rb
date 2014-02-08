@@ -58,10 +58,10 @@ module Sipwizard
       Relation.new.where(params)
     end
 
-    def self.find(sip_username)
+    def self.find(id)
       #TODO: should find by id not username
       #the where filter is broken on sipsorcery
-      relation = self.where({ SIPUsername: sip_username }).count(1)
+      relation = self.where({ ID: id }).count(1)
       result = Connection.new.get(API_PATH_MAP[:find], relation.relation)
 
       return nil unless result['Success']
