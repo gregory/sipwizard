@@ -21,7 +21,7 @@ Spork.prefork do
   VCR.configure do |config|
     config.cassette_library_dir = "spec/vcr"
     config.hook_into :faraday
-    config.default_cassette_options = { serialize_with: :psych , record: :new_episodes} #record: :new_episodes
+    config.default_cassette_options = { serialize_with: :psych , record: :none} #record: :new_episodes
 
     settings['sensitive_data'].each do |k, v|
       config.filter_sensitive_data("<#{k}>"){ |interactive| v }

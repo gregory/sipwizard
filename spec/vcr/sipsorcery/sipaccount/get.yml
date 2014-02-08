@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.sipsorcery.com/rest/v0.1/provisioning.svc/sipaccount/get?where%5BSIPUsername%5D=<SIPUsername>&count=1
+    uri: https://www.sipsorcery.com/rest/v0.1/provisioning.svc/sipaccount/get?where=ID%3D%22<ID>%22&count=1
     body:
       encoding: US-ASCII
       string: ''
@@ -14,10 +14,10 @@ http_interactions:
   response:
     status:
       code: 200
-      message:
+      message: 
     headers:
       content-length:
-      - '434'
+      - '453'
       content-type:
       - application/json; charset=utf-8
       server:
@@ -25,12 +25,12 @@ http_interactions:
       x-powered-by:
       - ASP.NET
       date:
-      - Sun, 02 Feb 2014 01:19:32 GMT
+      - Sat, 08 Feb 2014 23:36:13 GMT
       connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{"Error":null,"Result":[{"AccountCode":null,"AvatarURL":null,"Description":null,"DontMangleEnabled":false,"ID":"aaaaaaaa-613d-43a3-8aa7-75f5b8ed66gd","IPAddressACL":"","InDialPlanName":"0fsfsd","IsIncomingOnly":false,"IsSwitchboardEnabled":true,"IsUserDisabled":false,"NetworkID":"","OutDialPlanName":null,"SIPDomain":"fdsfsd","SIPPassword":"fdsfsd","SIPUsername":"0000t","SendNATKeepAlives":false}],"Success":true}'
-    http_version:
-  recorded_at: Sun, 02 Feb 2014 01:19:33 GMT
+      string: ! '{"Error":null,"Result":[{"AccountCode":null,"AvatarURL":null,"Description":null,"DontMangleEnabled":false,"ID":"<ID>","IPAddressACL":null,"InDialPlanName":"fooplan","IsIncomingOnly":false,"IsSwitchboardEnabled":false,"IsUserDisabled":false,"NetworkID":null,"OutDialPlanName":"barplan","SIPDomain":"foodomain","SIPPassword":"password","SIPUsername":"username","SendNATKeepAlives":false}],"Success":true}'
+    http_version: 
+  recorded_at: Sat, 08 Feb 2014 23:36:14 GMT
 recorded_with: VCR 2.6.0
