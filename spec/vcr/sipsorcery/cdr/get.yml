@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.sipsorcery.com/rest/v0.1/provisioning.svc/cdr/get?where=ID%3D%22<CDR_ID>%22&count=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      content-length:
+      - '1037'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sun, 09 Feb 2014 06:16:09 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Error":null,"Result":[{"AccountCode":null,"AnsweredReason":"Ok","AnsweredStatus":200,"AnsweredTime":"2014-02-08T17:56:34.6939005+00:00","Balance":0,"BridgeId":"bridge_id","CallDirection":"Out","CallId":"call_id","Cost":0,"Created":"2014-02-08T17:56:24.3343929+00:00","DialPlanContextID":"context_id","Dst":"dst","DstHost":"dst_host","DstURI":"dst_uri","Duration":250,"FromHeader":"<header>","FromName":null,"FromUser":"from_user","HungupReason":"remote
+        end hungup","HungupTime":"2014-02-08T18:00:45.1364736+00:00","ID":"<CDR_ID>","InProgressReason":"Session
+        progress","InProgressStatus":183,"InProgressTime":"2014-02-08T17:56:24.8343993+00:00","IncrementSeconds":0,"Inserted":"2014-02-08T17:56:24.3343929+00:00","LocalSocket":"udp:local_socket_id:port","Rate":0,"RemoteSocket":"udp:ip:port","RingDuration":10,"SetupCost":0}],"Success":true}'
+    http_version:
+  recorded_at: Sun, 09 Feb 2014 06:16:12 GMT
+recorded_with: VCR 2.6.0
