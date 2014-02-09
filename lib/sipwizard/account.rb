@@ -61,8 +61,6 @@ module Sipwizard
     end
 
     def self.find(id)
-      #TODO: should find by id not username
-      #the where filter is broken on sipsorcery
       relation = self.where({ ID: id }).count(1)
       result = Connection.new.get(API_PATH_MAP[:find], relation.relation)
 
@@ -72,7 +70,6 @@ module Sipwizard
     end
 
     def self.create(params)
-      #TODO: write doc
       payload = self.build_for_request(params)
       result = Connection.new.post(API_PATH_MAP[:create], payload)
 
@@ -99,32 +96,6 @@ module Sipwizard
 
     def delete
       Account.delete(self.id)
-    end
-
-    class Relation
-      attr_reader :relation
-
-      def initialize
-        @relation = Hashie::Clash.new
-      end
-
-      def where(params)
-        @relation.where( hash_to_query(params) )
-        self
-      end
-
-      def count(nb)
-        @relation.merge!({count: nb})
-        self
-      end
-
-      private
-
-      #Hack to comply with the api spec ... which sucks
-      def hash_to_query(h)
-        h = Hash[h.map{|k,v| [k, "\"#{v}\""]}]
-        Rack::Utils.unescape Rack::Utils.build_query(h)
-      end
     end
   end
 end
