@@ -5,7 +5,8 @@ module Sipwizard
     API_PATH_MAP ={
       count: 'sipaccount/count',
       find:  'sipaccount/get',
-      create: 'sipaccount/add'
+      create: 'sipaccount/add',
+      update: 'sipaccount/update'
     }
 
     string_to_bool = ->(string) { string == "true" }
@@ -74,6 +75,14 @@ module Sipwizard
       payload = self.build_for_request(params)
       result = Connection.new.post(API_PATH_MAP[:create], payload)
 
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #ID
+    end
+
+    def save
+      payload = Account.build_for_request(self.to_hash)
+      result = Connection.new.post(API_PATH_MAP[:update], payload)
       raise ArgumentError.new(result["Error"]) unless result['Success']
 
       result['Result'] #ID

@@ -45,4 +45,22 @@ describe Sipwizard::Account do
       end
     end
   end
+
+  describe '.save' do
+    let(:id){ settings['sensitive_data']['ID'] }
+    let(:account){ described_class.find(id) }
+
+    before{ account.should be_instance_of Sipwizard::Account }
+
+    subject{ account.save }
+
+    it 'updates the account' do
+      binding.pry
+      account.avatar_url = "foo"
+      response = subject
+      expect(response).not_to be_nil
+      expect(response).to be_instance_of String
+      expect(response).to match(/(?:\w|-)+/)
+    end
+  end
 end
