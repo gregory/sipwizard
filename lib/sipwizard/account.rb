@@ -6,7 +6,8 @@ module Sipwizard
       count: 'sipaccount/count',
       find:  'sipaccount/get',
       create: 'sipaccount/add',
-      update: 'sipaccount/update'
+      update: 'sipaccount/update',
+      delete: 'sipaccount/delete'
     }
 
     string_to_bool = ->(string) { string == "true" }
@@ -80,12 +81,24 @@ module Sipwizard
       result['Result'] #ID
     end
 
+    def self.delete(id)
+      result = Connection.new.get(API_PATH_MAP[:delete], {id: id})
+
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #true | false
+    end
+
     def save
       payload = Account.build_for_request(self.to_hash)
       result = Connection.new.post(API_PATH_MAP[:update], payload)
       raise ArgumentError.new(result["Error"]) unless result['Success']
 
       result['Result'] #ID
+    end
+
+    def delete
+      Account.delete(self.id)
     end
 
     class Relation

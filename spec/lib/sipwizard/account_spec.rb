@@ -55,12 +55,26 @@ describe Sipwizard::Account do
     subject{ account.save }
 
     it 'updates the account' do
-      binding.pry
       account.avatar_url = "foo"
       response = subject
       expect(response).not_to be_nil
       expect(response).to be_instance_of String
       expect(response).to match(/(?:\w|-)+/)
+    end
+  end
+
+  describe 'delete' do
+    let(:id){ settings['sensitive_data']['ID'] }
+
+    let(:account){ described_class.find(id) }
+
+    before{ account.should be_instance_of Sipwizard::Account }
+
+    subject{ account.delete }
+
+    it 'delete the account' do
+      response = subject
+      expect(response).to be_true
     end
   end
 end
