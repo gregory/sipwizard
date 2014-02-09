@@ -1,7 +1,8 @@
 module Sipwizard
   class Binding < Hashie::Trash
     API_PATH_MAP={
-      count: 'sipaccountbinding/count'
+      count: 'sipaccountbinding/count',
+      find:  'sipaccountbinding/get'
     }
 
     property :id,                   from: :ID
@@ -21,6 +22,19 @@ module Sipwizard
       response = Connection.new.get(API_PATH_MAP[:count])
 
       response['Success'] ? response['Result'] : -1
+    end
+
+    def self.where(params)
+      Relation.new.where(params)
+    end
+
+    def self.find(id)
+      relation = self.where({ ID: id }).count(1)
+      result = Connection.new.get(API_PATH_MAP[:find], relation.relation)
+
+      return nil unless result['Success']
+
+      self.new(result['Result'][0])
     end
   end
 end

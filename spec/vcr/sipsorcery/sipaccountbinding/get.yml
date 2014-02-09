@@ -1,0 +1,36 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.sipsorcery.com/rest/v0.1/provisioning.svc/sipaccountbinding/get?where=ID%3D%22<ACCOUNT_BINDING_ID>%22&count=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      content-length:
+      - '564'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sun, 09 Feb 2014 05:58:07 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Error":null,"Result":[{"ContactURI":"sip:id@ip:port","Expiry":123,"ExpiryTime":"2014-02-09T06:00:03.0480705+00:00","ID":"<ACCOUNT_BINDING_ID>","LastUpdate":"2014-02-09T05:58:03.0480705+00:00","MangledContactURI":"sip:id@ip:port","ProxySIPSocket":"udp:ip:port","RegistrarSIPSocket":"udp:ip:port","RemoteSIPSocket":"udp:ip:port","SIPAccountID":"sipaccount_id","SIPAccountName":"account_name","UserAgent":"user_agent"}],"Success":true}'
+    http_version:
+  recorded_at: Sun, 09 Feb 2014 05:58:09 GMT
+recorded_with: VCR 2.6.0
