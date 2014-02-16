@@ -1,7 +1,8 @@
 module Sipwizard
   class Provider < Hashie::Trash
     API_PATH_MAP = {
-      count: 'sipprovider/count'
+      count: 'sipprovider/count',
+      find: 'sipprovider/get'
     }
 
     string_to_bool = ->(string) { string == "true" }
@@ -25,10 +26,26 @@ module Sipwizard
     property :gv_callback_pattern,      from: :GVCallbackPattern
     property :gv_callback_type,         from: :GVCallbackType
 
+    alias :register_enabled? :register_enabled
+
     def self.count(params={})
       response = Connection.new.get(API_PATH_MAP[:count], params)
 
       response['Success'] ? response['Result'] : -1
+    end
+
+    def self.where(params)
+      Relation.new.where(params)
+    end
+
+    def self.find(id)
+      relation = self.where({ ID: id }).count(1)
+
+      result = Connection.new.get(API_PATH_MAP[:find], relation.relation)
+
+      return nil unless result['Success']
+
+      self.new(result['Result'][0])
     end
   end
 end
