@@ -3,7 +3,9 @@ module Sipwizard
     API_PATH_MAP = {
       count: 'sipprovider/count',
       find: 'sipprovider/get',
-      create: 'sipprovider/add'
+      create: 'sipprovider/add',
+      update: 'sipprovider/update',
+      delete: 'sipprovider/delete'
     }
 
     string_to_bool = ->(string) { string == "true" }
@@ -67,6 +69,26 @@ module Sipwizard
       raise ArgumentError.new(result["Error"]) unless result['Success']
 
       result['Result'] #ID
+    end
+
+    def save
+      payload = Provider.build_for_request(self.to_hash)
+      result = Connection.new.post(API_PATH_MAP[:update], payload)
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #ID
+    end
+
+    def self.delete(id)
+      result = Connection.new.get(API_PATH_MAP[:delete], {id: id})
+
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #true | false
+    end
+
+    def delete
+      Provider.delete(self.id)
     end
   end
 end

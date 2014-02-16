@@ -17,7 +17,7 @@ http_interactions:
       message:
     headers:
       content-length:
-      - '532'
+      - '502'
       content-type:
       - application/json; charset=utf-8
       server:
@@ -25,12 +25,12 @@ http_interactions:
       x-powered-by:
       - ASP.NET
       date:
-      - Sun, 16 Feb 2014 00:49:13 GMT
+      - Sun, 16 Feb 2014 10:09:28 GMT
       connection:
       - close
     body:
       encoding: US-ASCII
-      string: ! '{"Error":null,"Result":[{"CustomHeaders":null,"GVCallbackNumber":"","GVCallbackPattern":".*","GVCallbackType":"Home","ID":"<PROVIDER_ID>","ProviderAuthUsername":"","ProviderFrom":"","ProviderName":"provider_name","ProviderOutboundProxy":null,"ProviderPassword":"provider_password","ProviderServer":"sip:ip","ProviderType":"SIP","ProviderUsername":"provider_username","RegisterContact":null,"RegisterEnabled":false,"RegisterExpiry":0,"RegisterRealm":"","RegisterServer":null}],"Success":true}'
+      string: ! '{"Error":null,"Result":[{"CustomHeaders":null,"GVCallbackNumber":null,"GVCallbackPattern":null,"GVCallbackType":null,"ID":"<PROVIDER_ID>","ProviderAuthUsername":null,"ProviderFrom":null,"ProviderName":"foo","ProviderOutboundProxy":null,"ProviderPassword":"provider-pass","ProviderServer":"fjsdkjfqmslk","ProviderType":"SIP","ProviderUsername":"provider_username","RegisterContact":null,"RegisterEnabled":false,"RegisterExpiry":0,"RegisterRealm":null,"RegisterServer":null}],"Success":true}'
     http_version:
-  recorded_at: Sun, 16 Feb 2014 00:49:13 GMT
+  recorded_at: Sun, 16 Feb 2014 10:09:28 GMT
 recorded_with: VCR 2.6.0
