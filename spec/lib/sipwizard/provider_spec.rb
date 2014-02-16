@@ -19,4 +19,35 @@ describe Sipwizard::Provider do
       subject.id.should eq id
     end
   end
+
+  describe '.create(params)' do
+    let(:params) do
+      {
+        provider_name: "foo",
+        provider_username: "bar",
+        provider_password: 'provider_password',
+        provider_server: 'provider_server',
+        provider_type: 'provider_type',
+        register_contact: 'register_contact'
+      }
+    end
+
+    subject{ described_class.create(params) }
+
+    it 'creates a new provider and return an id' do
+      response = subject
+      expect(response).not_to be_nil
+      expect(response).to be_instance_of String
+      expect(response).to match(/(?:\w|-)+/)
+    end
+
+    context 'if the username already exists' do
+      it 'raise an argument error' do
+        expect do
+          described_class.create(params)
+          described_class.create(params.merge({provider_username: 'bar', provider_password: 'bra'}))
+        end.to raise_exception(ArgumentError)
+      end
+    end
+  end
 end

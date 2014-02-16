@@ -2,7 +2,8 @@ module Sipwizard
   class Provider < Hashie::Trash
     API_PATH_MAP = {
       count: 'sipprovider/count',
-      find: 'sipprovider/get'
+      find: 'sipprovider/get',
+      create: 'sipprovider/add'
     }
 
     string_to_bool = ->(string) { string == "true" }
@@ -13,7 +14,7 @@ module Sipwizard
     property :provider_password,        from: :ProviderPassword
     property :provider_server,          from: :ProviderServer
     property :provider_auth_username,   from: :ProviderAuthUsername
-    property :provider_out_bound_proxy, from: :ProviderOutboundProxy
+    property :provider_outbound_proxy,  from: :ProviderOutboundProxy
     property :provider_type,            from: :ProviderType
     property :provider_from,            from: :ProviderFrom
     property :custom_headers,           from: :CustomHeaders
@@ -46,6 +47,26 @@ module Sipwizard
       return nil unless result['Success']
 
       self.new(result['Result'][0])
+    end
+
+    def self.build_for_request(h)
+      provider = self.new(h)
+      provider = Hash[provider.map{ |k,v| ["#{k}".camelize, v] }]
+      provider['ID']                = provider.delete('Id')
+      provider['GVCallbackType']    = provider.delete('GvCallbackType')
+      provider['GVCallbackNumber']    = provider.delete('GvCallbackType')
+      provider['GVCallbackPattern']    = provider.delete('GvCallbackPattern')
+
+      provider.delete_if{ |_,v| v.nil? } #delete all the keys for which we dont have value
+    end
+
+    def self.create(params)
+      payload = self.build_for_request(params)
+      result = Connection.new.post(API_PATH_MAP[:create], payload)
+
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #ID
     end
   end
 end
