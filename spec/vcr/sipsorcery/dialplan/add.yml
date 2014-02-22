@@ -17,7 +17,7 @@ http_interactions:
   response:
     status:
       code: 200
-      message: 
+      message:
     headers:
       content-length:
       - '77'
@@ -28,14 +28,14 @@ http_interactions:
       x-powered-by:
       - ASP.NET
       date:
-      - Sat, 22 Feb 2014 21:52:58 GMT
+      - Sat, 22 Feb 2014 22:26:57 GMT
       connection:
       - close
     body:
       encoding: US-ASCII
       string: ! '{"Error":null,"Result":"<DIALPLAN_ID>","Success":true}'
-    http_version: 
-  recorded_at: Sat, 22 Feb 2014 21:53:00 GMT
+    http_version:
+  recorded_at: Sat, 22 Feb 2014 22:27:01 GMT
 - request:
     method: post
     uri: https://www.sipsorcery.com/rest/v0.1/provisioning.svc/dialplan/add
@@ -52,7 +52,7 @@ http_interactions:
   response:
     status:
       code: 200
-      message: 
+      message:
     headers:
       content-length:
       - '124'
@@ -63,13 +63,13 @@ http_interactions:
       x-powered-by:
       - ASP.NET
       date:
-      - Sat, 22 Feb 2014 21:55:39 GMT
+      - Sat, 22 Feb 2014 22:26:58 GMT
       connection:
       - close
     body:
       encoding: US-ASCII
       string: ! '{"Error":"An error occurred while updating the entries. See the inner
         exception for details.","Result":null,"Success":false}'
-    http_version: 
-  recorded_at: Sat, 22 Feb 2014 21:55:42 GMT
+    http_version:
+  recorded_at: Sat, 22 Feb 2014 22:27:03 GMT
 recorded_with: VCR 2.6.0

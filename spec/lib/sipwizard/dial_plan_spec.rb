@@ -61,6 +61,21 @@ describe Sipwizard::DialPlan do
     end
   end
 
+  describe 'copy' do
+    let(:id){ settings['sensitive_data']['DIALPLAN_ID'] }
+
+    let(:dial_plan){ described_class.find(id) }
+
+    before{ dial_plan.should be_instance_of Sipwizard::DialPlan }
+
+    subject{ dial_plan.copy }
+
+    it 'delete the account' do
+      response = subject
+      expect(response).to be_true
+    end
+  end
+
   describe '.save' do
     let(:id){ settings['sensitive_data']['DIALPLAN_ID'] }
     let(:dial_plan){ described_class.find(id) }

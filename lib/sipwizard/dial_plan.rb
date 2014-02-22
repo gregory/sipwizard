@@ -5,7 +5,8 @@ module Sipwizard
       find: 'dialplan/get',
       create: 'dialplan/add',
       delete: 'dialplan/delete',
-      update: 'dialplan/update'
+      update: 'dialplan/update',
+      copy: 'dialplan/copy'
     }
 
     string_to_bool = ->(string) { string == "true" }
@@ -55,14 +56,6 @@ module Sipwizard
       result['Result'] #ID
     end
 
-    def save
-      payload = DialPlan.build_for_request(self.to_hash)
-      result = Connection.new.post(API_PATH_MAP[:update], payload)
-      raise ArgumentError.new(result["Error"]) unless result['Success']
-
-      result['Result'] #ID
-    end
-
     def self.delete(id)
       result = Connection.new.get(API_PATH_MAP[:delete], {id: id})
 
@@ -71,8 +64,28 @@ module Sipwizard
       result['Result'] #true | false
     end
 
+    def self.copy(id)
+      result = Connection.new.get(API_PATH_MAP[:copy], {id: id})
+
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #true | false
+    end
+
+    def save
+      payload = DialPlan.build_for_request(self.to_hash)
+      result = Connection.new.post(API_PATH_MAP[:update], payload)
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #ID
+    end
+
     def delete
       DialPlan.delete(self.id)
+    end
+
+    def copy
+      DialPlan.copy(self.id)
     end
   end
 end
