@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.sipsorcery.com/rest/v0.1/provisioning.svc/dialplan/add
+    body:
+      encoding: UTF-8
+      string: ! '{"DialPlanName":"foo","DialPlanScript":"sys.Dial(\"music@iptel.org\");
+        sys.Respond(404, \"No one home\")"}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '77'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sat, 22 Feb 2014 21:03:00 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Error":null,"Result":"dca797cc-19ca-4373-a719-88cf8ddbd0cf","Success":true}'
+    http_version: 
+  recorded_at: Sat, 22 Feb 2014 21:03:01 GMT
+recorded_with: VCR 2.6.0
