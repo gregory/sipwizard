@@ -14,54 +14,24 @@ http_interactions:
   response:
     status:
       code: 200
-      message:
+      message: 
     headers:
-      !binary "Y29udGVudC1sZW5ndGg=":
-      - !binary |-
-        MTExNg==
-      !binary "Y29udGVudC10eXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
-      !binary "c2VydmVy":
-      - !binary |-
-        TWljcm9zb2Z0LUlJUy83LjA=
-      !binary "eC1wb3dlcmVkLWJ5":
-      - !binary |-
-        QVNQLk5FVA==
-      !binary "ZGF0ZQ==":
-      - !binary |-
-        RnJpLCAyMSBGZWIgMjAxNCAwMzozMjozNSBHTVQ=
-      !binary "Y29ubmVjdGlvbg==":
-      - !binary |-
-        Y2xvc2U=
+      content-length:
+      - '271'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sat, 22 Feb 2014 21:54:26 GMT
+      connection:
+      - close
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJFcnJvciI6bnVsbCwiUmVzdWx0IjpbeyJBY2NlcHROb25JbnZpdGUiOmZh
-        bHNlLCJEaWFsUGxhbk5hbWUiOiJjb250YWN0X19udW1fMDA0NDIwMzUxOTA1
-        OTQiLCJEaWFsUGxhblNjcmlwdCI6IiNOQiA9IDAwNDQyMDM1MTkwNTk0XHUw
-        MDBhXHUwMDBhc3lzLkxvZyhcIi0gLSAtIERJQUwgUExBTiA9PSAje3N5cy5E
-        aWFsUGxhbk5hbWV9IC0gQ1QgLSBNYW51ZWwgVmljZW50ZSAtPiBHRC1tw4PC
-        g8OCwoPDg8KCw4LCqHJlIC0gLSAtIC0gLSAtIC0gLSAtIC0gLSAtIFwiKVx1
-        MDAwYVx1MDAwYXN5cy50cmFjZSA9IHRydWVcdTAwMGFcdTAwMGFjYWxsZXIg
-        PSBcIjAwXCIgKyByZXEuSGVhZGVyLkZyb20uRnJvbVVSSS5Vc2VyXHUwMDBh
-        c3lzLkxvZyhcIj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+PiBDQUxMRVIgPVwi
-        ICsgY2FsbGVyKVx1MDAwYVx1MDAwYWlmIGNhbGxlciAgPT0gXCIwMDQ0MjA3
-        Mzg1NDk3OVwiICAjTWFudWVsIHZpY2VudGUgKGZpeGUpXHUwMDBhICAgIHN5
-        cy5Mb2coXCJNYW51ZWwgdmljZW50ZSAoZml4ZSlcIilcdTAwMGEgICAgc3lz
-        LkRpYWwoXCIrMzQ5NzI1MDUzMzdAMDAzMjQ4ODU2MDMwN2J2cltmdT0rNDQ3
-        Nzg2MjU1NjMxXVwiKVx1MDAwYWVsc2lmIGNhbGxlciA9PSBcIjAwNDQ3Nzg2
-        MjU1NjMxXCIgICNNYW51ZWwgdmljZW50ZSAobW9iaWxlKVx1MDAwYSAgICBz
-        eXMuTG9nKFwiTWFudWVsIHZpY2VudGUgKG1vYmlsZSlcIilcdTAwMGEgICAg
-        c3lzLkRpYWwoXCIrMzQ5NzI1MDUzMzdAMDAzMjQ4ODU2MDMwN2J2cltmdT0r
-        NDQ3Nzg2MjU1NjMxXVwiKVx1MDAwYWVsc2lmIGNhbGxlciA9PSBcIjAwNDQ3
-        OTIwODE4MzY3XCIgICNNYW51ZWwgdmljZW50ZSAoZ3NtIGJ1cmVhdSlcdTAw
-        MGEgICAgc3lzLkxvZyhcIk1hbnVlbCB2aWNlbnRlIChtb2JpbGUpXCIpXHUw
-        MDBhICAgIHN5cy5EaWFsKFwiKzM0OTcyNTA1MzM3QDAwMzI0ODg1NjAzMDdi
-        dnJbZnU9KzQ0Nzc4NjI1NTYzMV1cIilcdTAwMGFlbmQiLCJJRCI6IjxESUFM
-        UExBTl9JRD4iLCJTY3JpcHRUeXBlRGVzY3JpcHRpb24iOiJSdWJ5IiwiVHJh
-        Y2VFbWFpbEFkZHJlc3MiOiJsaW5jb2V1citsb2dAZ21haWwuY29tIn1dLCJT
-        dWNjZXNzIjp0cnVlfQ==
-    http_version:
-  recorded_at: Fri, 21 Feb 2014 03:32:36 GMT
+      encoding: US-ASCII
+      string: ! '{"Error":null,"Result":[{"AcceptNonInvite":false,"DialPlanName":"foo","DialPlanScript":"sys.Dial(\"music@iptel.org\");
+        sys.Respond(404, \"No one home\")","ID":"<DIALPLAN_ID>","ScriptTypeDescription":"Ruby","TraceEmailAddress":null}],"Success":true}'
+    http_version: 
+  recorded_at: Sat, 22 Feb 2014 21:54:30 GMT
 recorded_with: VCR 2.6.0

@@ -37,12 +37,12 @@ describe Sipwizard::DialPlan do
     end
 
     context 'if the username already exists' do
-      #it 'raise an argument error' do
-        #expect do
-          #described_class.create(params)
-          #described_class.create({username: 'foo', password: 'bra'})
-        #end.to raise_exception(ArgumentError)
-      #end
+      it 'raise an argument error' do
+        expect do
+          described_class.create(params)
+          described_class.create({dial_plan_name: 'foo', dial_plan_script: 'bra'})
+        end.to raise_exception(ArgumentError)
+      end
     end
   end
 
@@ -58,6 +58,23 @@ describe Sipwizard::DialPlan do
     it 'delete the account' do
       response = subject
       expect(response).to be_true
+    end
+  end
+
+  describe '.save' do
+    let(:id){ settings['sensitive_data']['DIALPLAN_ID'] }
+    let(:dial_plan){ described_class.find(id) }
+
+    before{ dial_plan.should be_instance_of Sipwizard::DialPlan }
+
+    subject{ dial_plan.save }
+
+    it 'updates the account' do
+      dial_plan.trace_email_address = "foo@bar.com"
+      response = subject
+      expect(response).not_to be_nil
+      expect(response).to be_instance_of String
+      expect(response).to match(/(?:\w|-)+/)
     end
   end
 end
