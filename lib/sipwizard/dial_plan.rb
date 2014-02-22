@@ -3,7 +3,8 @@ module Sipwizard
     API_PATH_MAP= {
       count: 'dialplan/count',
       find: 'dialplan/get',
-      create: 'dialplan/add'
+      create: 'dialplan/add',
+      delete: 'dialplan/delete'
     }
 
     string_to_bool = ->(string) { string == "true" }
@@ -51,6 +52,18 @@ module Sipwizard
       raise ArgumentError.new(result["Error"]) unless result['Success']
 
       result['Result'] #ID
+    end
+
+    def self.delete(id)
+      result = Connection.new.get(API_PATH_MAP[:delete], {id: id})
+
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #true | false
+    end
+
+    def delete
+      DialPlan.delete(self.id)
     end
   end
 end

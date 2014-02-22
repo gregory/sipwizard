@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.sipsorcery.com/rest/v0.1/provisioning.svc/dialplan/get?where=ID%3D%22<DIALPLAN_ID>%22&count=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      !binary "Y29udGVudC1sZW5ndGg=":
+      - !binary |-
+        MTExNg==
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
+      !binary "c2VydmVy":
+      - !binary |-
+        TWljcm9zb2Z0LUlJUy83LjA=
+      !binary "eC1wb3dlcmVkLWJ5":
+      - !binary |-
+        QVNQLk5FVA==
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        RnJpLCAyMSBGZWIgMjAxNCAwMzozMjozNSBHTVQ=
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        Y2xvc2U=
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJFcnJvciI6bnVsbCwiUmVzdWx0IjpbeyJBY2NlcHROb25JbnZpdGUiOmZh
+        bHNlLCJEaWFsUGxhbk5hbWUiOiJjb250YWN0X19udW1fMDA0NDIwMzUxOTA1
+        OTQiLCJEaWFsUGxhblNjcmlwdCI6IiNOQiA9IDAwNDQyMDM1MTkwNTk0XHUw
+        MDBhXHUwMDBhc3lzLkxvZyhcIi0gLSAtIERJQUwgUExBTiA9PSAje3N5cy5E
+        aWFsUGxhbk5hbWV9IC0gQ1QgLSBNYW51ZWwgVmljZW50ZSAtPiBHRC1tw4PC
+        g8OCwoPDg8KCw4LCqHJlIC0gLSAtIC0gLSAtIC0gLSAtIC0gLSAtIFwiKVx1
+        MDAwYVx1MDAwYXN5cy50cmFjZSA9IHRydWVcdTAwMGFcdTAwMGFjYWxsZXIg
+        PSBcIjAwXCIgKyByZXEuSGVhZGVyLkZyb20uRnJvbVVSSS5Vc2VyXHUwMDBh
+        c3lzLkxvZyhcIj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+PiBDQUxMRVIgPVwi
+        ICsgY2FsbGVyKVx1MDAwYVx1MDAwYWlmIGNhbGxlciAgPT0gXCIwMDQ0MjA3
+        Mzg1NDk3OVwiICAjTWFudWVsIHZpY2VudGUgKGZpeGUpXHUwMDBhICAgIHN5
+        cy5Mb2coXCJNYW51ZWwgdmljZW50ZSAoZml4ZSlcIilcdTAwMGEgICAgc3lz
+        LkRpYWwoXCIrMzQ5NzI1MDUzMzdAMDAzMjQ4ODU2MDMwN2J2cltmdT0rNDQ3
+        Nzg2MjU1NjMxXVwiKVx1MDAwYWVsc2lmIGNhbGxlciA9PSBcIjAwNDQ3Nzg2
+        MjU1NjMxXCIgICNNYW51ZWwgdmljZW50ZSAobW9iaWxlKVx1MDAwYSAgICBz
+        eXMuTG9nKFwiTWFudWVsIHZpY2VudGUgKG1vYmlsZSlcIilcdTAwMGEgICAg
+        c3lzLkRpYWwoXCIrMzQ5NzI1MDUzMzdAMDAzMjQ4ODU2MDMwN2J2cltmdT0r
+        NDQ3Nzg2MjU1NjMxXVwiKVx1MDAwYWVsc2lmIGNhbGxlciA9PSBcIjAwNDQ3
+        OTIwODE4MzY3XCIgICNNYW51ZWwgdmljZW50ZSAoZ3NtIGJ1cmVhdSlcdTAw
+        MGEgICAgc3lzLkxvZyhcIk1hbnVlbCB2aWNlbnRlIChtb2JpbGUpXCIpXHUw
+        MDBhICAgIHN5cy5EaWFsKFwiKzM0OTcyNTA1MzM3QDAwMzI0ODg1NjAzMDdi
+        dnJbZnU9KzQ0Nzc4NjI1NTYzMV1cIilcdTAwMGFlbmQiLCJJRCI6IjxESUFM
+        UExBTl9JRD4iLCJTY3JpcHRUeXBlRGVzY3JpcHRpb24iOiJSdWJ5IiwiVHJh
+        Y2VFbWFpbEFkZHJlc3MiOiJsaW5jb2V1citsb2dAZ21haWwuY29tIn1dLCJT
+        dWNjZXNzIjp0cnVlfQ==
+    http_version:
+  recorded_at: Fri, 21 Feb 2014 03:32:36 GMT
+recorded_with: VCR 2.6.0
