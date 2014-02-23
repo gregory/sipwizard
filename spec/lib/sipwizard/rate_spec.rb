@@ -48,4 +48,21 @@ describe Sipwizard::Rate do
       subject.id.should eq id
     end
   end
+
+  describe '.save' do
+    let(:id){ settings['sensitive_data']['RATE_ID'] }
+    let(:rate){ described_class.find(id) }
+
+    before{ rate.should be_instance_of Sipwizard::Rate }
+
+    subject{ rate.save }
+
+    it 'updates the rate' do
+      rate.prefix = "1234"
+      response = subject
+      expect(response).not_to be_nil
+      expect(response).to be_instance_of String
+      expect(response).to match(/(?:\w|-)+/)
+    end
+  end
 end

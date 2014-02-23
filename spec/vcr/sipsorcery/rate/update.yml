@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.sipsorcery.com/rest/v0.1/accounting.svc/rate/update
+    body:
+      encoding: UTF-8
+      string: ! '{"Description":"foo","IncrementSeconds":1,"Inserted":"2014-02-23T21:47:53.3581120+00:00","Prefix":"1234","Rate":2.0,"SetupCost":0.0,"ID":"<RATE_ID>"}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '77'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sun, 23 Feb 2014 22:01:35 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Error":null,"Result":"<RATE_ID>","Success":true}'
+    http_version: 
+  recorded_at: Sun, 23 Feb 2014 22:01:32 GMT
+recorded_with: VCR 2.6.0
