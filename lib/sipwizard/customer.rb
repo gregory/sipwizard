@@ -1,8 +1,9 @@
 module Sipwizard
   class Customer < Hashie::Trash
     API_PATH_MAP={
-      count: 'customeraccount/count',
-      create: 'customeraccount/add'
+      count:  'customeraccount/count',
+      create: 'customeraccount/add',
+      find:   'customeraccount/get'
     }
 
     property :id,             from: :ID
@@ -11,6 +12,7 @@ module Sipwizard
     property :account_name,   from: :AccountName
     property :account_number, from: :AccountNumber
     property :pin,            from: :PIN
+    property :inserted,       from: :Inserted
 
     def self.count(params={})
       response = connection.get(API_PATH_MAP[:count], params)
@@ -34,6 +36,19 @@ module Sipwizard
       raise ArgumentError.new(result["Error"]) unless result['Success']
 
       result['Result'] #ID
+    end
+
+    def self.where(params)
+      Relation.new.where(params)
+    end
+
+    def self.find(id)
+      relation = self.where({ ID: id }).count(1)
+      result = connection.get(API_PATH_MAP[:find], relation.relation)
+
+      return nil unless result['Success']
+
+      self.new(result['Result'][0])
     end
 
     private

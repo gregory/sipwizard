@@ -34,4 +34,15 @@ describe Sipwizard::Customer do
       end
     end
   end
+
+  describe '.find(id)' do
+    let(:id){ settings['sensitive_data']['CUSTOMER_ID'] }
+
+    subject{ described_class.find(id) }
+
+    it 'returns an account' do
+      subject.should be_instance_of Sipwizard::Customer
+      subject.id.should eq id
+    end
+  end
 end
