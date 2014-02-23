@@ -3,7 +3,8 @@ module Sipwizard
     API_PATH_MAP={
       count:  'customeraccount/count',
       create: 'customeraccount/add',
-      find:   'customeraccount/get'
+      find:   'customeraccount/get',
+      update: 'customeraccount/update'
     }
 
     property :id,             from: :ID
@@ -49,6 +50,14 @@ module Sipwizard
       return nil unless result['Success']
 
       self.new(result['Result'][0])
+    end
+
+    def save
+      payload = Customer.build_for_request(self.to_hash)
+      result = Connection.new(api_type: :accounting).post(API_PATH_MAP[:update], payload)
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #ID
     end
 
     private

@@ -45,4 +45,21 @@ describe Sipwizard::Customer do
       subject.id.should eq id
     end
   end
+
+  describe '.save' do
+    let(:id){ settings['sensitive_data']['CUSTOMER_ID'] }
+    let(:customer){ described_class.find(id) }
+
+    before{ customer.should be_instance_of Sipwizard::Customer }
+
+    subject{ customer.save }
+
+    it 'updates the account' do
+      customer.pin = "1234"
+      response = subject
+      expect(response).not_to be_nil
+      expect(response).to be_instance_of String
+      expect(response).to match(/(?:\w|-)+/)
+    end
+  end
 end

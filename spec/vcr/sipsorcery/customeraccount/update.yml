@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.sipsorcery.com/rest/v0.1/accounting.svc/customeraccount/update
+    body:
+      encoding: UTF-8
+      string: ! '{"AccountCode":"foobar","AccountName":"foo","Credit":4.0,"Inserted":"2014-02-23T01:13:59.8470018+00:00","ID":"<CUSTOMER_ID>","PIN":"1234"}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      content-length:
+      - '77'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sun, 23 Feb 2014 01:27:10 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Error":null,"Result":"<CUSTOMER_ID>","Success":true}'
+    http_version: 
+  recorded_at: Sun, 23 Feb 2014 01:27:10 GMT
+recorded_with: VCR 2.6.0
