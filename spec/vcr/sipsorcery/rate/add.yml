@@ -1,0 +1,73 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.sipsorcery.com/rest/v0.1/accounting.svc/rate/add
+    body:
+      encoding: UTF-8
+      string: ! '{"Description":"foo","Prefix":"777","Rate":2.0,"SetupCost":0,"IncrementSeconds":1}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      content-length:
+      - '77'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sun, 23 Feb 2014 21:47:53 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Error":null,"Result":"<RATE_ID>","Success":true}'
+    http_version:
+  recorded_at: Sun, 23 Feb 2014 21:47:49 GMT
+- request:
+    method: post
+    uri: https://www.sipsorcery.com/rest/v0.1/accounting.svc/rate/add
+    body:
+      encoding: UTF-8
+      string: ! '{"Description":"bar","Prefix":"777","Rate":1.0,"SetupCost":0,"IncrementSeconds":1}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      apikey:
+      - <SIPSORCERY_API_KEY>
+      Content-Type:
+      - application/json; charset=utf-8
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      content-length:
+      - '76'
+      content-type:
+      - application/json; charset=utf-8
+      server:
+      - Microsoft-IIS/7.0
+      x-powered-by:
+      - ASP.NET
+      date:
+      - Sun, 23 Feb 2014 21:49:46 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '{"Error":"The rate prefix is already in use.","Result":null,"Success":false}'
+    http_version:
+  recorded_at: Sun, 23 Feb 2014 21:49:43 GMT
+recorded_with: VCR 2.6.0
