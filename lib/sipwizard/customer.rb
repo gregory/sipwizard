@@ -4,7 +4,8 @@ module Sipwizard
       count:  'customeraccount/count',
       create: 'customeraccount/add',
       find:   'customeraccount/get',
-      update: 'customeraccount/update'
+      update: 'customeraccount/update',
+      delete: 'customeraccount/delete'
     }
 
     property :id,             from: :ID
@@ -60,6 +61,17 @@ module Sipwizard
       result['Result'] #ID
     end
 
+    def self.delete(id)
+      result = connection.get(API_PATH_MAP[:delete], {id: id})
+
+      raise ArgumentError.new(result["Error"]) unless result['Success']
+
+      result['Result'] #true | false
+    end
+
+    def delete
+      Customer.delete(self.id)
+    end
     private
 
     def self.connection

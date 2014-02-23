@@ -62,4 +62,19 @@ describe Sipwizard::Customer do
       expect(response).to match(/(?:\w|-)+/)
     end
   end
+
+  describe 'delete' do
+    let(:id){ settings['sensitive_data']['CUSTOMER_ID'] }
+
+    let(:customer){ described_class.find(id) }
+
+    before{ customer.should be_instance_of Sipwizard::Customer }
+
+    subject{ customer.delete }
+
+    it 'delete the customer' do
+      response = subject
+      expect(response).to be_true
+    end
+  end
 end
