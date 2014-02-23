@@ -29,9 +29,10 @@ Spork.prefork do
 
     config.around_http_request do |request|
       case request.uri
-      when Regexp.new(Sipwizard::Connection::API_PATH)
+      when Regexp.new(Sipwizard::Connection::BASE_REST_API)
         #endpoint_test = /rest/v0.1/provisioning.svc/cdr/count" => cdr/count
-        endpoint_test = URI(request.uri).path.split("/rest/v0.1/provisioning.svc/").last
+        #endpoint_test = /rest/v0.1/accounting.svc/cdr/count" => cdr/count
+        endpoint_test = URI(request.uri).path[/\/rest\/v0.1\/(?:provisioning|accounting).svc\/([A-z|\/]*)/, 1]
         vcr_options = { match_requests_on: [:method, :path, :body, :headers, :query], allow_playback_repeats: true }
 
         VCR.use_cassette("sipsorcery/#{endpoint_test}", vcr_options, &request)

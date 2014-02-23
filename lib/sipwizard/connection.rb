@@ -3,12 +3,18 @@ require 'faraday_middleware'
 
 module Sipwizard
   class Connection
-    API_PATH = 'https://www.sipsorcery.com/rest/v0.1/provisioning.svc'
+    BASE_REST_API= "https://www.sipsorcery.com/rest/v0.1"
+    API_PATHS ={
+      provisioning: "#{BASE_REST_API}/provisioning.svc",
+      accounting: "#{BASE_REST_API}/accounting.svc",
+    }
 
     attr_accessor :faraday_connection
 
-    def initialize(faraday_adapter=Faraday.default_adapter)
-      @faraday_connection = Faraday.new(API_PATH) do |faraday|
+    def initialize(options={})
+      faraday_adapter = options.fetch(:adapter){ Faraday.default_adapter }
+      api_type        = options.fetch(:api_type){ :provisioning }
+      @faraday_connection = Faraday.new(API_PATHS[api_type]) do |faraday|
         faraday.request :url_encoded #for post/put params
 
         faraday.response :logger
