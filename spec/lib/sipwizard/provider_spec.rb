@@ -82,4 +82,26 @@ describe Sipwizard::Provider do
       expect(response).to be_true
     end
   end
+
+  describe 'binding(cache=true)' do
+    let(:id){ settings['sensitive_data']['PROVIDER_ID'] }
+
+    let(:provider){ described_class.find(id) }
+
+    before{ provider.should be_instance_of Sipwizard::Provider }
+
+    subject{ provider.binding }
+
+    it 'return the binding of a provider' do
+      Sipwizard::ProviderBinding.should_receive(:find_by_provider_id).once.and_call_original
+      expect(subject).to be_instance_of Sipwizard::ProviderBinding
+      subject.provider_id.should eq provider.id
+    end
+
+    it 'can skip the cache response' do
+      Sipwizard::ProviderBinding.should_receive(:find_by_provider_id).twice.and_call_original
+      expect(subject).to be_instance_of Sipwizard::ProviderBinding
+      provider.binding(false).provider_id.should eq provider.id
+    end
+  end
 end

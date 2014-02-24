@@ -79,6 +79,11 @@ module Sipwizard
       result['Result'] #ID
     end
 
+    def binding(cache=true)
+      return @binding if @binding && cache
+      @binding = ProviderBinding.find_by_provider_id(self.id)
+    end
+
     def self.delete(id)
       result = Connection.new.get(API_PATH_MAP[:delete], {id: id})
 

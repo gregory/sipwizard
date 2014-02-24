@@ -39,5 +39,15 @@ module Sipwizard
 
       self.new(result['Result'][0])
     end
+
+    def self.find_by_provider_id(id)
+      relation = self.where({ ProviderID: id }).count(1)
+
+      result = Connection.new.get(API_PATH_MAP[:find], relation.relation)
+
+      return nil unless result['Success']
+
+      self.new(result['Result'][0])
+    end
   end
 end
