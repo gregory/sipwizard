@@ -53,14 +53,14 @@ describe Sipwizard::Provider do
 
   describe '.save' do
     let(:id){ settings['sensitive_data']['PROVIDER_ID'] }
-    let(:account){ described_class.find(id) }
+    let(:provider){ described_class.find(id) }
 
-    before{ account.should be_instance_of Sipwizard::Provider }
+    before{ provider.should be_instance_of Sipwizard::Provider }
 
-    subject{ account.save }
+    subject{ provider.save }
 
-    it 'updates the account' do
-      account.provider_name = "barbar"
+    it 'updates the provider' do
+      provider.provider_name = "barbar"
       response = subject
       expect(response).not_to be_nil
       expect(response).to be_instance_of String
@@ -71,13 +71,13 @@ describe Sipwizard::Provider do
   describe 'delete' do
     let(:id){ settings['sensitive_data']['PROVIDER_ID'] }
 
-    let(:account){ described_class.find(id) }
+    let(:provider){ described_class.find(id) }
 
-    before{ account.should be_instance_of Sipwizard::Provider }
+    before{ provider.should be_instance_of Sipwizard::Provider }
 
-    subject{ account.delete }
+    subject{ provider.delete }
 
-    it 'delete the account' do
+    it 'delete the provider' do
       response = subject
       expect(response).to be_true
     end
