@@ -14,7 +14,8 @@ module Sipwizard
     def initialize(options={})
       faraday_adapter = options.fetch(:adapter){ Faraday.default_adapter }
       api_type        = options.fetch(:api_type){ :provisioning }
-      @faraday_connection = Faraday.new(API_PATHS[api_type]) do |faraday|
+      params          = options.fetch(:connection_params){{}}
+      @faraday_connection = Faraday.new(API_PATHS[api_type], params ) do |faraday|
         faraday.request :url_encoded #for post/put params
 
         faraday.response :logger

@@ -1,3 +1,3 @@
 module Sipwizard
-  class Configuration < Struct.new(:api_key); end
+  class Configuration < Struct.new(:api_key, :connection_params); end
 end
