@@ -15,10 +15,11 @@ module Sipwizard
       faraday_adapter = options.fetch(:adapter){ Faraday.default_adapter }
       api_type        = options.fetch(:api_type){ :provisioning }
       params          = options.fetch(:connection_params){{}}
+      debug_enabled   = options.fetch(:debug_enabled){ false }
       @faraday_connection = Faraday.new(API_PATHS[api_type], params ) do |faraday|
         faraday.request :url_encoded #for post/put params
 
-        faraday.response :logger
+        faraday.response :logger if debug_enabled
         faraday.response :raise_error
         faraday.response :json, content_type: /\bjson\z/
 
