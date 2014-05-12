@@ -19,6 +19,32 @@ describe Sipwizard::Account do
     end
   end
 
+  describe '.first_by(args)' do
+    let(:id){ settings['sensitive_data']['ID'] }
+
+    subject{ described_class.first_by({ 'ID' => id }) }
+
+    it 'returns an account' do
+      subject.should be_instance_of Sipwizard::Account
+      subject.id.should eq id
+    end
+  end
+
+  #TOOD: add more specs
+  describe '.first_x_by(args)' do
+    let(:id){ settings['sensitive_data']['ID'] }
+    let(:count){ 1 }
+
+    subject{ described_class.first_x_by({ 'ID' => id, count: 1 }) }
+
+    it 'returns an account' do
+      subject.should be_instance_of Array
+      account = subject.first
+      account.should be_instance_of Sipwizard::Account
+      account.id.should eq id
+    end
+  end
+
   describe '.create(params)' do
     let(:params) do
       {

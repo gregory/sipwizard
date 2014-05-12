@@ -69,6 +69,25 @@ module Sipwizard
       self.new(result['Result'][0])
     end
 
+    def self.first_by(args)
+      relation = self.where(args).count(1)
+      result = Connection.new.get(API_PATH_MAP[:find], relation.relation)
+
+      return nil unless result['Success']
+
+      self.new(result['Result'][0])
+    end
+
+    def self.first_x_by(args)
+      count = args.delete(:count)
+      relation = self.where(args).count(count)
+      result = Connection.new.get(API_PATH_MAP[:find], relation.relation)
+
+      return nil unless result['Success']
+
+      result['Result'].map{ |r| self.new(r) }
+    end
+
     def self.create(params)
       payload = self.build_for_request(params)
       result = Connection.new.post(API_PATH_MAP[:create], payload)
