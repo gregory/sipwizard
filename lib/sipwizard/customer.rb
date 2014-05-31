@@ -44,13 +44,23 @@ module Sipwizard
       Relation.new.where(params)
     end
 
-    def self.find(id)
-      relation = self.where({ ID: id }).count(1)
+    def self.find(params)
+      relation = params.is_a?(Hash) ? self.where(params).count(1) : self.where({ ID: params }).count(1)
       result = connection.get(API_PATH_MAP[:find], relation.relation)
 
       return nil unless result['Success']
 
       self.new(result['Result'][0])
+    end
+
+    def self.first_x_by(args)
+      count = args.delete(:count)
+      relation = self.where(args).count(count)
+      result = connection.new.get(API_PATH_MAP[:find], relation.relation)
+
+      return nil unless result['Success']
+
+      result['Result'].map{ |r| self.new(r) }
     end
 
     def save
